@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Native WebSocket Example</title>
+</head>
+<body>
+    <h1>Socket Test</h1>
+    <script>
+        // 웹 소켓 전역 객체 생성
+        var ws = new WebSocket('ws://localhost:3000');
+
+        ws.onopen = (event) => { // 서버에게 메시지 전송
+            ws.send("Client message: Hi!")
+        }
+
+        ws.onmessage = (event) => { // 서버에서 메시지 수신
+            console.log(`Server mesage: ${event.data}`);
+        }
+
+        ws.onerror = (evnet) => { // 에러 처리
+            console.log(`Server error message ${event.data}`)
+        }
+    </script>
+</body>
+</html>
